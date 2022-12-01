@@ -1,5 +1,5 @@
 var input = require("fs").readFileSync("input.txt", "utf8");
-var winner = 0
+var elves = []
 input.split("\n\n").forEach(function (group) {
     console.log("G")
     var answers = group.split("\n");
@@ -8,8 +8,12 @@ input.split("\n\n").forEach(function (group) {
     answers.forEach(function (answer) {
         answerd += parseInt(answer)
     })
-    if(answerd >= winner) {
-        winner = answerd
-    }
+    elves.push(answerd)
 })
-console.log("W",winner)
+elves.sort()
+var sum = 0
+for(var i = elves.length - 1; i >= elves.length-3; i--) {
+   sum+=elves[i]
+}
+console.log(sum)
+
